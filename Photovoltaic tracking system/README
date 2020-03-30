@@ -1,0 +1,11 @@
+The system reads values from two photoresistors, distinguishing positions: 1 - for the first photoresistor,
+2-position intermediate between 1 and 2 photoresistor and 3-for the second photoresistor. 
+The read values are displayed on the display, they are the determinant to set the servo in the right position. 
+The generated current powers the LED.
+
+Used lib:
+LiquidCrystal.h
+https://github.com/arduino-libraries/LiquidCrystal
+
+Servo.h
+https://github.com/arduino-libraries/Servo
