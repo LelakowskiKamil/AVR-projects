@@ -1,0 +1,37 @@
+#include <Servo.h>
+#include <LiquidCrystal.h> 
+LiquidCrystal lcd(2, 3, 4, 5, 6, 7); 
+Servo myservo; 
+int pos = 0; 
+int fotoPin1 = 0; 
+int fotoPin2 = 1; 
+ int fotoDane1; 
+ int fotoDane2; 
+void setup() {
+ myservo.attach(9); 
+ lcd.begin(16, 1); 
+ lcd.setCursor(0, 0);
+ Serial.begin(9600);
+}
+void loop() {
+fotoDane1 = analogRead(fotoPin1); 
+fotoDane2 = analogRead(fotoPin2);
+ Serial.print("Oswietlenie1 = "); 
+ Serial.println(fotoDane1);
+ Serial.print("Oswietlenie2 = ");
+ Serial.println(fotoDane2);
+ lcd.clear();
+ lcd.print(fotoDane1); 
+ lcd.setCursor(5, 0); 
+ lcd.print(fotoDane2); 
+ delay(2000);
+ if(fotoDane1>fotoDane2+100){
+ myservo.write(45);
+ }
+ if(100+fotoDane1<fotoDane2){
+ myservo.write(135);
+}
+ if((fotoDane1<(fotoDane2+100) )&& ((100+fotoDane1)>fotoDane2)){
+myservo.write(90);
+}
+}
